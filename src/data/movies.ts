@@ -1,4 +1,6 @@
-export const movies = [
+import { Movie } from "@/types/movie";
+
+export const initialMovies: Movie[] = [
   {
     id: "1",
     title: "Goodfellas",
@@ -10,5 +12,11 @@ export const movies = [
     title: "Psycho",
     director: "Alfred Hitchcock",
     releaseYear: 1960,
+  },
+  {
+    id: "3",
+    title: "2001, A Space Odyssey",
+    director: "Stanley Kubrick",
+    releaseYear: 1968,
   },
 ];
