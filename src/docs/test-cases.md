@@ -1,19 +1,20 @@
 ## Structure
 
-ID
+Titre avec ID (TC-XXX)
 Priorité
 Précondition
 Étapes
 Résultat attendu
 
+<!-- -------------------------------------------------------------------------------------------------- -->
 
-## Validation des données 
+## Validation des données (Create)
 
 # TC-001
 
 Titre : création d'un film valide
-Priorité : Critique
-Précondition : Utilisateur sur la page d'ajout.
+Priorité : critique
+Précondition : utilisateur sur la page d'ajout
 
 Étapes :
 
@@ -23,67 +24,192 @@ Précondition : Utilisateur sur la page d'ajout.
 
 Résultat attendu :
 
-- Le film est créé.
-- Le film apparaît dans la liste.
+- Le film est créé et un message d'information apparaît (ex. : "Le film a bien été créé").
+- Le film apparaît dans la liste et sa page dédiée /movies/[id] est accessible.
+
+<!-- - Est-il pertinent de mettre une redirection automatique vers page du film créé ?? -->
 
 # TC-002
 
-Titre : création d'un film avec titre manquant
-Priorité : Critique
-Précondition : Utilisateur sur la page d'ajout.
+Titre : création d'un film avec donnée manquante
+Priorité : critique
+Précondition : utilisateur sur la page d'ajout
 
 Étapes :
 
 1. Ne PAS saisir de titre
-2. Saisir une année
+2. Saisir une année (ou l'inverse)
 3. Cliquer sur Ajouter
 
 Résultat attendu :
 
-- Message d'erreur informant sur le statut et la donnée manquante.
-- Process de création interrompu et sauvegarde des données empêchée.
+- Message d'erreur informant sur le statut et la donnée manquante
+- Process de création d'un film interrompu et sauvegarde des données empêchée
 
-## Recherche d'un film 
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+## Afficher les données d'un ou plusieurs films (Read)
+
 # TC-003
+
+Titre : afficher la liste des films
+Priorité : critique
+Précondition : se trouver sur la page /
+
+Étapes :
+
+1. En principe aucune démarche n'est nécessaire, l'affichage est automatique.
+
+Résultat attendu : les films apparaissent sous forme de liste et leur page dédiée /movies/[id] est accessible via un lien
+
+# TC-004
+
+Titre : afficher le détail des informations relatives à un film
+Priorité : critique
+Précondition : se trouver sur la page /movies/[id]
+
+Étapes :
+
+1. En principe aucune démarche n'est nécessaire, l'affichage est automatique.
+
+Résultat attendu : les données du film (titre, réalisateur, année etc.) apparaissent sur la page.
+
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+## Mettre à jour les données d'un film (Update)
+
+# TC-005
+
+Titre : mettre à jour tout ou partie des informations relatives à un film
+Priorité : moyenne
+Précondition : se trouver sur la page /movies/[id]
+
+Étapes :
+
+1. Appuyer sur le bouton "Mettre à jour" qui redirige vers la page /movies/[id]/edit
+2. Afficher le formulaire avec données actuelles pré-remplies
+3. Modifier la ou les donnée(s) nécessaires
+
+Résultat attendu :
+
+- Le film est mis à jour et un message d'information apparaît (ex. : "Les données relatives au film ont bien été mises à jour.").
+- Le film apparaît dans la liste et sa page dédiée /movies/[id] est accessible avec les données mises à jour.
+
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+## Supprimer un film (Delete)
+
+# TC-006
+
+Titre : supprimer les informations relatives à un film et sa page dédiée
+Priorité : moyenne
+Précondition : se trouver sur la page /movies/[id]
+
+Étapes :
+
+1. Utiliser le bouton "Supprimer" présent sur la page.
+2. Appuyer sur le bouton "Confirmer" de la modale qui s'est ouverte.
+
+Résultat attendu : les données du film (titre, réalisateur, année etc.) sont supprimées et la page dédiée inaccessible, l'utilisateur est redirigé automatiquement vers la page d'accueil après affichage d'un message de succès.
+
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+## Vérifier la présence d'éléments
+
+# TC-007
+
+Titre : vérifier la présence du bouton skiplink
+Priorité : moyen
+Précondition : se trouver sur n'importe quelle page du site
+
+Étapes :
+
+1. Après être arrivé sur une page ou l'avoir rechargée, appuyer sur la touche "Tab"
+
+Résultat attendu : le bouton skiplink doit apparaître et être désormais utilisable.
+
+# TC-008
+
+Titre : vérifier la présence du bouton "Créer un film"
+Priorité : critique
+Précondition : se trouver sur n'importe quelle page du site
+
+Étapes :
+
+1. En principe aucune démarche n'est nécessaire, l'affichage du bouton est automatique sur toutes les pages.
+
+Résultat attendu : le bouton "Créer un film" doit apparaître et être utilisable.
+
+# TC-009
+
+Titre : vérifier la présence du bouton "Supprimer"
+Priorité : moyen
+Précondition : se trouver sur la page dédiée au film /movies/[id]
+
+Étapes :
+
+1. En principe aucune démarche n'est nécessaire, l'affichage du bouton est automatique sur la page du film.
+
+Résultat attendu : le bouton "Supprimer" doit apparaître et être utilisable.
+
+# TC-010
+
+Titre : vérifier la présence du bouton "Mettre à jour"
+Priorité : moyen
+Précondition : se trouver sur la page dédiée au film /movies/[id]
+
+Étapes :
+
+1. En principe aucune démarche n'est nécessaire, l'affichage du bouton est automatique sur la page du film.
+
+Résultat attendu : le bouton "Mettre à jour" doit apparaître et être utilisable.
+
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+## Recherche d'un film
+
+# TC-011
 
 Titre : recherche d'un film existant
 Priorité : faible
-Précondition : disposer d'au moins un film enregistré.
+Précondition : disposer d'au moins un film enregistré
 
 Étapes :
 
 1. Saisir trois lettres d'un film figurant sur la page d'accueil
 2. Lancer la recherche
 
-Résultat attendu : le film recherché apparaît et sa page dédiée /movies/[id] est accessible via un lien.
+Résultat attendu : le film recherché apparaît et sa page dédiée /movies/[id] est accessible via un lien
 
-## Tests unitaires
-
-- validation de formulaires : isValidEmail() / formatDate()
-- accessibilité des éléments : expect(button).toBeVisible() / alt
-- message d'erreur suffisamment explicite pour chaque situation
-- redirection vers page / après suppression d'un film
-
-## Tests React
-
-- page / : affichage d'une liste de films
-- page /movies/[id] : affichage des données du film [id]
-- page movies/new/ : affichage de messages à propos du statut de l'enregistrement ("Succès / "Echec")
-
-## Tests E2E Playwright
-
-- parcours complet de connexion : page / --> navigation page /login --> redirection automatique vers page /mon-compte
-- redirection automatique vers page d'accueil / après logout
-- parcours de crééation d'un film : page /movies/new remplissage formulaire de création puis soumission --> validation des données --> sauvegarde si données correctes --> message de confirmation après création --> redirection automatique vers page du film créé ??
+<!-- -------------------------------------------------------------------------------------------------- -->
 
 ## Accessibilité
 
-- présence du bouton skiplink
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+## Navigation
+
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+## To do
+
+# Tests unitaires
+
+- validation de formulaires : isValidEmail() / formatDate()
+- accessibilité des éléments : expect(button).toBeVisible() / alt
+
+# Tests E2E Playwright
+
+- parcours complet de connexion : page / --> navigation page /login --> redirection automatique vers page /mon-compte
+- redirection automatique vers page d'accueil / après logout
+
+# Accessibilité
+
 - aria labels
 - alt renseignés dans balises img
 - navigation clavier
 
-## Lighthouse
+# Lighthouse
 
 - mesure de la performance
 - diagnostic accessibilité
