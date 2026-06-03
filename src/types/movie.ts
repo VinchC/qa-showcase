@@ -2,6 +2,7 @@ export type Movie = {
   id: string;
   title: string;
   director: string;
+  picture?: string;
   releaseYear: number;
 };
 

@@ -16,7 +16,7 @@ Score = Probabilité × Impact
 | Modification film | 2           | 3      | 6     |
 | Suppression film  | 2           | 3      | 6     |
 | Recherche         | 3           | 1      | 3     |
-| Navigation        | 1           | 2      | 2     |
+| Navigation        | 2           | 2      | 4     |
 
 ## Priorisation
 

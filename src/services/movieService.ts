@@ -18,7 +18,7 @@ class MovieService {
     return this.movies.find((movie) => movie.id === id);
   }
 
-  /* Affiche l'ensemble des films */
+  /* Recherche un film par son titre */
   searchMovies(searchQuery: string): Movie[] {
     const query = searchQuery.trim().toLowerCase();
 
