@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Présentation du projet
 
-## Getting Started
+Application de gestion de collection de films.
 
-First, run the development server:
+Les utilisateurs peuvent :
 
-```bash
+- consulter
+- rechercher
+- créer
+- modifier
+- supprimer
+  des films.
+
+## Architecture
+
+## Stack
+
+- Jest :
+- React Testing Library :
+- Playwright :
+- Lighthouse :
+
+## Stratégie QA
+
+- Automatisation des tests à chaque push via GitHub Actions
+
+## Couverture des tests
+
+Liste des fonctionnalités testées :
+
+- formulaires
+- validations
+- CRUD (Create, Read, Update, Delete)
+- recherche
+- navigation
+- gestion d'erreurs
+
+## Démarrer l'application
+
 npm run dev
+
 # or
+
 yarn dev
+
 # or
+
 pnpm dev
+
 # or
+
 bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensuite ouvrir la page [http://localhost:3000](http://localhost:3000) sur le navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Comment lancer les tests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Possibilité de lancer les tests manuellement :
 
-## Learn More
+- npm run test : lance tous les tests
+- npm run test:e2e : lance les tests de type e2e
 
-To learn more about Next.js, take a look at the following resources:
+## Liens
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Evaluation des risques : ./src/docs/risk-analysis.md
+- Détails des tests mis en place dans l'app : ./src/docs/test-cases.md
+- Reporting des bugs constatés et actions mises en places pour résolution : ./src/docs/bug-reports.md
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## V2
 
-## Deploy on Vercel
+Ajout des fonctionnalités Login / logout :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- redirection vers page / après login
+- message d'erreur si login ou password incorrects
+- message d'erreur distinct si login non reconnu
+- nécessité d'être connecté pour créer / modifier un film
+- nécessité d'être connecté en tant qu'admin pour supprimer un film
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Validation du type de fichier (.jpg ou .png seuls autorisés) si ajout d'image.
