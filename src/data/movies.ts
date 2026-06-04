@@ -4,7 +4,7 @@ export const initialMovies: Movie[] = [
   {
     id: "1",
     title: "Goodfellas",
-    director: "martin Scorsese",
+    director: "Martin Scorsese",
     releaseYear: 1990,
   },
   {

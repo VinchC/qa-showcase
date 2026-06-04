@@ -1,76 +1,76 @@
-import { initialMovies } from "@/data/movies";
+import { loadMovies, saveMovies } from "@/services/movieStorage";
+
 import { Movie, CreateMovieInput, UpdateMovieInput } from "@/types/movie";
 
 class MovieService {
-  private movies: Movie[];
-
-  constructor() {
-    this.movies = [...initialMovies];
-  }
-
-  /* Affiche l'ensemble des films */
   getAllMovies(): Movie[] {
-    return [...this.movies];
+    return loadMovies();
   }
 
-  /* Affiche un film grâce à son ID */
   getMovieById(id: string): Movie | undefined {
-    return this.movies.find((movie) => movie.id === id);
+    return loadMovies().find((movie) => movie.id === id);
   }
 
-  /* Recherche un film par son titre */
-  searchMovies(searchQuery: string): Movie[] {
-    const query = searchQuery.trim().toLowerCase();
+  searchMovies(searchTerm: string): Movie[] {
+    const movies = loadMovies();
 
-    if (!query) {
-      return [...this.movies];
+    const normalizedTerm = searchTerm.trim().toLowerCase();
+
+    if (!normalizedTerm) {
+      return movies;
     }
 
-    return this.movies.filter((movie) =>
-      movie.title.toLowerCase().includes(query),
+    return movies.filter((movie) =>
+      movie.title.toLowerCase().includes(normalizedTerm),
     );
   }
 
-  /* Création d'un film */
   createMovie(input: CreateMovieInput): Movie {
-    const newMovie: Movie = {
+    const movies = loadMovies();
+
+    const newMovie = {
       id: crypto.randomUUID(),
       ...input,
     };
 
-    this.movies.push(newMovie);
+    movies.push(newMovie);
+
+    saveMovies(movies);
 
     return newMovie;
   }
 
-  /* Mettre à jour un film existant */
   updateMovie(id: string, updates: UpdateMovieInput): Movie | null {
-    const movieIndex = this.movies.findIndex((movie) => movie.id === id);
+    const movies = loadMovies();
 
-    if (movieIndex === -1) {
+    const index = movies.findIndex((movie) => movie.id === id);
+
+    if (index === -1) {
       return null;
     }
 
-    this.movies[movieIndex] = {
-      ...this.movies[movieIndex],
+    movies[index] = {
+      ...movies[index],
       ...updates,
     };
 
-    return this.movies[movieIndex];
+    saveMovies(movies);
+
+    return movies[index];
   }
 
-  /* Supprimer un film */
   deleteMovie(id: string): boolean {
-    const initialLength = this.movies.length;
+    const movies = loadMovies();
 
-    this.movies = this.movies.filter((movie) => movie.id !== id);
+    const filteredMovies = movies.filter((movie) => movie.id !== id);
 
-    return this.movies.length < initialLength;
+    saveMovies(filteredMovies);
+
+    return filteredMovies.length < movies.length;
   }
 
-  /* Réinitialisation des trois films du fichier @/data/movies.ts */
-  resetMovies(): void {
-    this.movies = [...initialMovies];
+  resetMovies() {
+    saveMovies([]);
   }
 }
 
