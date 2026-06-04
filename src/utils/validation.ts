@@ -1,22 +1,20 @@
-export function validateMovie(
-  title: string,
-  director: string,
-  releaseYear: number,
-): string[] {
+import { MovieFormValues } from "@/types/movie";
+
+export function validateMovie(values: MovieFormValues): string[] {
   const errors: string[] = [];
 
-  if (!title.trim()) {
-    errors.push("Le titre est obligatoire.");
+  if (!values.title.trim()) {
+    errors.push("Title is required");
   }
 
-  if (!director.trim()) {
-    errors.push("Le nom du réalisateur/trice est obligatoire.");
+  if (!values.director.trim()) {
+    errors.push("Director is required");
   }
 
   const currentYear = new Date().getFullYear();
 
-  if (releaseYear < 1888 || releaseYear > currentYear) {
-    errors.push("La date de sortie n'est pas valide.");
+  if (values.releaseYear < 1888 || values.releaseYear > currentYear) {
+    errors.push("Release year is invalid");
   }
 
   return errors;
