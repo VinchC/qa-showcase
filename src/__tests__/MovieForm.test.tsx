@@ -5,31 +5,52 @@ import userEvent from "@testing-library/user-event";
 import MovieForm from "@/components/MovieForm";
 
 describe("MovieForm", () => {
-  it("creates a movie with valid data", async () => {
-    const user = userEvent.setup();
+  describe("Create Movie", () => {
+    it("TC-001 creates a movie with valid data", async () => {
+      const user = userEvent.setup();
 
-    const onSubmit = jest.fn();
+      const onSubmit = jest.fn();
 
-    render(<MovieForm onSubmit={onSubmit} />);
+      render(<MovieForm onSubmit={onSubmit} />);
 
-    await user.type(screen.getByTestId("movie-title"), "Test");
+      await user.type(screen.getByTestId("movie-title"), "Test");
 
-    await user.type(screen.getByTestId("movie-director"), "Pops");
+      await user.type(screen.getByTestId("movie-director"), "Pops");
 
-    await user.clear(screen.getByTestId("movie-release-year"));
+      await user.clear(screen.getByTestId("movie-release-year"));
 
-    await user.type(screen.getByTestId("movie-release-year"), "2026");
+      await user.type(screen.getByTestId("movie-release-year"), "2026");
 
-    await user.click(screen.getByTestId("save-movie"));
+      await user.click(screen.getByTestId("save-movie"));
 
-    expect(onSubmit).toHaveBeenCalledTimes(1);
+      expect(onSubmit).toHaveBeenCalledTimes(1);
 
-    expect(onSubmit).toHaveBeenCalledWith({
-      title: "Test",
+      expect(onSubmit).toHaveBeenCalledWith({
+        title: "Test",
 
-      director: "Pops",
+        director: "Pops",
 
-      releaseYear: 2026,
+        releaseYear: 2026,
+      });
+    });
+    it("TC-002 prevents movie creation when title is missing", async () => {
+      const user = userEvent.setup();
+
+      const onSubmit = jest.fn();
+
+      render(<MovieForm onSubmit={onSubmit} />);
+
+      await user.type(screen.getByTestId("movie-director"), "Paps");
+
+      await user.clear(screen.getByTestId("movie-release-year"));
+
+      await user.type(screen.getByTestId("movie-release-year"), "2000");
+
+      await user.click(screen.getByTestId("save-movie"));
+
+      expect(onSubmit).not.toHaveBeenCalled();
+
+      expect(screen.getByText("Le titre est obligatoire.")).toBeInTheDocument();
     });
   });
 });

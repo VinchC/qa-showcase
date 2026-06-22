@@ -19,23 +19,22 @@ Priorité : critique
 Type : fonctionnel
 Précondition :
 
-- utilisateur sur la page movie/new
-- le formulaire est affiché
-- le titre de film "Test" n'existe pas déjà
+- L'utilisateur est sur la page movie/new
+- Le formulaire est affiché
+- Le titre de film "Test" n'existe pas déjà
 
 Données de test :
 
 - Titre : Test
 - Réalisateur : Pops
 - Année de sortie : 2026
-- Cliquer sur Enregistrer
 
 Étapes :
 
 1. Saisir le Titre "Test"
 2. Saisir "Pops" comme Réalisateur
-3. Saisir l'année "2026" en Année de sortie
-4. Cliquer sur Ajouter
+3. Saisir "2026" en Année de sortie
+4. Cliquer sur Enregistrer
 
 Résultat attendu :
 
@@ -47,24 +46,35 @@ Résultat attendu :
 - La page /movies/[id] du film est accessible
 - Les informations affichées correspondent aux données saisies
 
-<!-- - Est-il pertinent de mettre une redirection automatique vers page du film créé ?? -->
-
 # TC-002
 
-Titre : création d'un film avec donnée manquante
+Titre : tentative de création d'un film sans titre
 Priorité : critique
-Précondition : utilisateur sur la page d'ajout
+Type : fonctionnel
+Précondition :
+
+- L'utilisateur est sur la page movie/new
+- Le formulaire est affiché
+
+Données de test :
+
+- Titre : (vide / empty)
+- Réalisateur : Paps
+- Année de sortie : 2000
 
 Étapes :
 
-1. Ne PAS saisir de titre
-2. Saisir une année (ou l'inverse)
-3. Cliquer sur Ajouter
+1. Laisser le champ Titre vide
+2. Saisir "Paps" comme Réalisateur
+3. Saisir "2000" en Année de sortie
+4. Cliquer sur Enregistrer
 
 Résultat attendu :
 
-- Message d'erreur informant sur le statut et la donnée manquante
-- Process de création d'un film interrompu et sauvegarde des données empêchée
+- ULe message "Le titre est obligatoire." apparaît.
+- Le formulaire n'est pas soumis
+- Aucun film n'est créé
+- L'utilisateur reste sur la page de création
 
 <!-- -------------------------------------------------------------------------------------------------- -->
 
