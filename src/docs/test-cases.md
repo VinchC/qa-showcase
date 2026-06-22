@@ -2,7 +2,9 @@
 
 Titre avec ID (TC-XXX)
 Priorité
+Type
 Précondition
+Données de test
 Étapes
 Résultat attendu
 
@@ -12,20 +14,38 @@ Résultat attendu
 
 # TC-001
 
-Titre : création d'un film valide
+Titre : création d'un film avec des données valides
 Priorité : critique
-Précondition : utilisateur sur la page d'ajout
+Type : fonctionnel
+Précondition :
+
+- utilisateur sur la page movie/new
+- le formulaire est affiché
+- le titre de film "Test" n'existe pas déjà
+
+Données de test :
+
+- Titre : Test
+- Réalisateur : Pops
+- Année de sortie : 2026
+- Cliquer sur Enregistrer
 
 Étapes :
 
-1. Saisir un titre
-2. Saisir une année
-3. Cliquer sur Ajouter
+1. Saisir le Titre "Test"
+2. Saisir "Pops" comme Réalisateur
+3. Saisir l'année "2026" en Année de sortie
+4. Cliquer sur Ajouter
 
 Résultat attendu :
 
-- Le film est créé et un message d'information apparaît (ex. : "Le film a bien été créé").
-- Le film apparaît dans la liste et sa page dédiée /movies/[id] est accessible.
+- Aucun message d'erreur n'est affiché
+- Le film est créé
+- Un identifiant unique est généré
+- L'utilisateur est redirigé vers la page prévue
+- Le film apparaît dans la liste
+- La page /movies/[id] du film est accessible
+- Les informations affichées correspondent aux données saisies
 
 <!-- - Est-il pertinent de mettre une redirection automatique vers page du film créé ?? -->
 
