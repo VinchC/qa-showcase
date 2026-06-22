@@ -11,10 +11,18 @@ import DeleteConfirmationModal from "@/components/DeleteConfirmationModal";
 
 import { movieService } from "@/services/movieService";
 
+import { useSearchParams } from "next/navigation";
+
+import SuccessMessage from "@/components/SuccessMessage";
+
 export default function MovieDetails() {
   const router = useRouter();
 
   const params = useParams();
+
+  const searchParams = useSearchParams();
+
+  const created = searchParams.get("created");
 
   const movie = movieService.getMovieById(params.id as string);
 
@@ -35,6 +43,13 @@ export default function MovieDetails() {
   return (
     <main className="max-w-2xl mx-auto p-6">
       <h1 className="text-3xl font-bold" data-testid="movie-title">
+        {created === "true" && (
+          <SuccessMessage
+            message="
+      Le film a bien été créé.
+    "
+          />
+        )}
         {movie.title}
       </h1>
 

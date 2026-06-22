@@ -36,7 +36,7 @@ export default function HomePage() {
           mb-6
         "
       >
-        Movie Collection
+        Collection de films
       </h1>
 
       <div className="mb-6">

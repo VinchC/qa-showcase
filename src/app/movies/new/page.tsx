@@ -8,10 +8,10 @@ import { MovieFormValues } from "@/types/movie";
 export default function NewMoviePage() {
   const router = useRouter();
 
-  const handleCreateMovie = (values: MovieFormValues) => {
-    movieService.createMovie(values);
+  const handleCreateMovie = async (values: MovieFormValues) => {
+    const movie = movieService.createMovie(values);
 
-    router.push("/");
+    router.push(`/movies/${movie.id}?created=true`);
   };
 
   return (

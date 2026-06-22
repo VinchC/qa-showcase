@@ -11,20 +11,6 @@ class MovieService {
     return loadMovies().find((movie) => movie.id === id);
   }
 
-  searchMovies(searchTerm: string): Movie[] {
-    const movies = loadMovies();
-
-    const normalizedTerm = searchTerm.trim().toLowerCase();
-
-    if (!normalizedTerm) {
-      return movies;
-    }
-
-    return movies.filter((movie) =>
-      movie.title.toLowerCase().includes(normalizedTerm),
-    );
-  }
-
   createMovie(input: CreateMovieInput): Movie {
     const movies = loadMovies();
 
