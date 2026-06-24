@@ -58,8 +58,10 @@ Ensuite ouvrir la page [http://localhost:3000](http://localhost:3000) sur le nav
 Possibilité de lancer les tests manuellement :
 
 - npm run test : lance tous les tests
-- npm run test:e2e : lance les tests de type e2e
 - npx jest MovieForm.test.ts : lance tous les tests du fichier sélectionné
+- npx playwright test : lance les tests de type e2e
+- npx playwright test create-movie.spec.ts : lance tous les tests du fichier sélectionné
+- npx playwright test --debug :  lance les tests en mode debug
 
 ## Liens
 

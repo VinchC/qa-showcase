@@ -10,8 +10,6 @@ const {
   REQUIRED_TITLE,
   REQUIRED_DIRECTOR,
   REQUIRED_RELEASE_YEAR,
-  // INVALID_RELEASE_YEAR,
-  // FUTURE_RELEASE_YEAR,
 } = ERROR_MESSAGES;
 
 describe("MovieForm", () => {
@@ -26,8 +24,6 @@ describe("MovieForm", () => {
       await user.type(screen.getByTestId("movie-title"), "Test");
 
       await user.type(screen.getByTestId("movie-director"), "Pops");
-
-      // await user.clear(screen.getByTestId("movie-release-year"));
 
       await user.selectOptions(
         screen.getByTestId("movie-release-year"),
@@ -55,8 +51,6 @@ describe("MovieForm", () => {
 
       await user.type(screen.getByTestId("movie-director"), "Paps");
 
-      // await user.clear(screen.getByTestId("movie-release-year"));
-
       await user.selectOptions(
         screen.getByTestId("movie-release-year"),
         "2000",
@@ -76,8 +70,6 @@ describe("MovieForm", () => {
       render(<MovieForm onSubmit={onSubmit} />);
 
       await user.type(screen.getByTestId("movie-title"), "Test");
-
-      // await user.clear(screen.getByTestId("movie-release-year"));
 
       await user.selectOptions(
         screen.getByTestId("movie-release-year"),
@@ -100,8 +92,6 @@ describe("MovieForm", () => {
       await user.type(screen.getByTestId("movie-title"), "Test");
 
       await user.type(screen.getByTestId("movie-director"), "Paps");
-
-      // await user.clear(screen.getByTestId("movie-release-year"));
 
       await user.click(screen.getByTestId("save-movie"));
 
