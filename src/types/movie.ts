@@ -9,7 +9,7 @@ export type Movie = {
 export type MovieFormValues = {
   title: string;
   director: string;
-  releaseYear: number;
+  releaseYear: number | null;
 };
 
 export type CreateMovieInput = Omit<Movie, "id">;

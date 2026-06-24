@@ -1,27 +1,36 @@
 import { MovieFormValues } from "@/types/movie";
 import { ERROR_MESSAGES } from "../constants/errorMessages";
+import { MOVIE_RULES, CURRENT_YEAR } from "../constants/movieRules";
 
 export function validateMovie(values: MovieFormValues): string[] {
+  const { title, director, releaseYear } = values;
+  const {
+    REQUIRED_TITLE,
+    REQUIRED_DIRECTOR,
+    REQUIRED_RELEASE_YEAR,
+    INVALID_RELEASE_YEAR,
+    FUTURE_RELEASE_YEAR,
+  } = ERROR_MESSAGES;
+
   const errors: string[] = [];
 
-  if (!values.title.trim()) {
-    errors.push(ERROR_MESSAGES.REQUIRED_TITLE);
+  if (!title.trim()) {
+    errors.push(REQUIRED_TITLE);
   }
 
-  if (!values.director.trim()) {
-    errors.push(ERROR_MESSAGES.REQUIRED_DIRECTOR);
+  if (!director.trim()) {
+    errors.push(REQUIRED_DIRECTOR);
   }
 
-  if (!values.releaseYear) {
-    errors.push(ERROR_MESSAGES.REQUIRED_RELEASE_YEAR);
+  if (!releaseYear) {
+    errors.push(REQUIRED_RELEASE_YEAR);
   }
 
-  const currentYear = new Date().getFullYear();
-
-  if (values.releaseYear < 1888) {
-    errors.push(ERROR_MESSAGES.INVALID_RELEASE_YEAR);
-  } else if (values.releaseYear > currentYear) {
-    errors.push(ERROR_MESSAGES.FUTURE_RELEASE_YEAR);
+  if (releaseYear && releaseYear < MOVIE_RULES.MIN_RELEASE_YEAR) {
+    errors.push(INVALID_RELEASE_YEAR);
+  }
+  if (releaseYear && releaseYear > CURRENT_YEAR) {
+    errors.push(FUTURE_RELEASE_YEAR);
   }
 
   return errors;

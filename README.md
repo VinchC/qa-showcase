@@ -15,10 +15,10 @@ Les utilisateurs peuvent :
 
 ## Stack
 
-- Jest :
-- React Testing Library :
-- Playwright :
-- Lighthouse :
+- Jest
+- React Testing Library
+- Playwright
+- Lighthouse
 
 ## Stratégie QA
 
@@ -59,6 +59,7 @@ Possibilité de lancer les tests manuellement :
 
 - npm run test : lance tous les tests
 - npm run test:e2e : lance les tests de type e2e
+- npx jest MovieForm.test.ts : lance tous les tests du fichier sélectionné
 
 ## Liens
 

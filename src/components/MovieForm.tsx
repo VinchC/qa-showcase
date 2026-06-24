@@ -5,6 +5,8 @@ import { useMovieForm } from "@/hooks/useMovieForm";
 
 import ErrorMessage from "@/components/ErrorMessage";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import { generateYears } from "@/utils/generateYears";
+import { MOVIE_RULES } from "@/constants/movieRules";
 
 type MovieFormProps = {
   initialMovie?: Movie;
@@ -16,15 +18,13 @@ export default function MovieForm({ initialMovie, onSubmit }: MovieFormProps) {
   const {
     title,
     director,
-    releaseYear,
     errors,
-
+    releaseYear,
     isLoading,
 
     setTitle,
     setDirector,
     setReleaseYear,
-
     handleSubmit,
   } = useMovieForm({
     initialMovie,
@@ -34,6 +34,8 @@ export default function MovieForm({ initialMovie, onSubmit }: MovieFormProps) {
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
+  const years = generateYears();
 
   return (
     <form
@@ -53,6 +55,7 @@ export default function MovieForm({ initialMovie, onSubmit }: MovieFormProps) {
         <input
           id="title"
           className="border p-2 w-full"
+          maxLength={MOVIE_RULES.MAX_TITLE_LENGTH}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           data-testid="movie-title"
@@ -77,15 +80,32 @@ export default function MovieForm({ initialMovie, onSubmit }: MovieFormProps) {
         <label htmlFor="releaseYear" className="block mb-1">
           Année de sortie
         </label>
+        <select
+          id="releaseYear"
+          className="border p-2 w-full"
+          value={releaseYear || ""}
+          onChange={(e) => setReleaseYear(Number(e.target.value))}
+          data-testid="movie-release-year"
+        >
+          <option value="">Sélectionner</option>
+          {years.map((year) => (
+            <option key={year} value={year} className="text-black">
+              {year}
+            </option>
+          ))}
+        </select>
 
-        <input
+        {/* <input
           id="releaseYear"
           type="number"
+          min={1895}
+          max={CURRENT_YEAR}
+          step={1}
           className="border p-2 w-full"
           value={releaseYear}
           onChange={(e) => setReleaseYear(Number(e.target.value))}
           data-testid="movie-release-year"
-        />
+        /> */}
       </div>
 
       <button

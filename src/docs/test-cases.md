@@ -71,7 +71,67 @@ Données de test :
 
 Résultat attendu :
 
-- ULe message "Le titre est obligatoire." apparaît.
+- Le message "Le titre est obligatoire." apparaît.
+- Le formulaire n'est pas soumis
+- Aucun film n'est créé
+- L'utilisateur reste sur la page de création
+
+# TC-003
+
+Titre : tentative de création d'un film sans réalisateur
+Priorité : critique
+Type : fonctionnel
+Précondition :
+
+- L'utilisateur est sur la page movie/new
+- Le formulaire est affiché
+
+Données de test :
+
+- Titre : Test2
+- Réalisateur : (vide / empty)
+- Année de sortie : 2000
+
+Étapes :
+
+1. Saisir "Test2" comme Titre
+2. Laisser le champ Réalisateur vide
+3. Saisir "2000" en Année de sortie
+4. Cliquer sur Enregistrer
+
+Résultat attendu :
+
+- Le message "Le réalisateur est obligatoire." apparaît.
+- Le formulaire n'est pas soumis
+- Aucun film n'est créé
+- L'utilisateur reste sur la page de création
+
+# TC-004
+
+Titre : tentative de création d'un film sans renseigner l'année de sortie
+Priorité : critique
+Type : fonctionnel
+Précondition :
+
+- L'utilisateur est sur la page movie/new
+- Le formulaire est affiché
+
+Données de test :
+
+- Titre : Test
+- Réalisateur : Paps
+- Année de sortie : (vide / empty)
+
+Étapes :
+
+1. Saisir "Test" comme Titre
+2. Saisir "Paps" comme Réalisateur
+3. Ne pas sélectionner de date dans la liste Année de sortie
+4. Cliquer sur Enregistrer
+
+Résultat attendu :
+
+- Le message "L'année de sortie est obligatoire" apparaît.
 - Le formulaire n'est pas soumis
 - Aucun film n'est créé
 - L'utilisateur reste sur la page de création
@@ -80,7 +140,7 @@ Résultat attendu :
 
 ## Afficher les données d'un ou plusieurs films (Read)
 
-# TC-003
+# TC-XXX
 
 Titre : afficher la liste des films
 Priorité : critique
@@ -92,7 +152,7 @@ Précondition : se trouver sur la page /
 
 Résultat attendu : les films apparaissent sous forme de liste et leur page dédiée /movies/[id] est accessible via un lien
 
-# TC-004
+# TC-XXX
 
 Titre : afficher le détail des informations relatives à un film
 Priorité : critique

@@ -16,8 +16,8 @@ export function useMovieForm({ initialMovie, onSubmit }: UseMovieFormProps) {
 
   const [director, setDirector] = useState(initialMovie?.director ?? "");
 
-  const [releaseYear, setReleaseYear] = useState(
-    initialMovie?.releaseYear ?? 2000,
+  const [releaseYear, setReleaseYear] = useState<number | null>(
+    initialMovie?.releaseYear ?? null,
   );
 
   const [isLoading, setIsLoading] = useState(false);
